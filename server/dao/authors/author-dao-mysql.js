@@ -19,14 +19,14 @@ class AuthorDaoMysql extends AuthorDao {
     });
   }
 
-  insert(callback, { id, name, year }) {
+  insert(callback, { Au_ID, Author, Year_Born }) {
     let query =
       "INSERT INTO authors (Au_ID, Author, Year_Born) VALUES (?, ?, ?)";
-    db.query(query, [id, name, year], (err, res) => {
+    db.query(query, [Au_ID, Author, Year_Born], (err, res) => {
       if (err) console.log("Erreur :" + err.message);
       else {
         callback({
-          data: { id, name, year },
+          data: { Au_ID, Author, Year_Born },
         });
       }
     });
@@ -56,16 +56,16 @@ class AuthorDaoMysql extends AuthorDao {
     });
   }
 
-  update(callback, id, { name, year }) {
+  update(callback, id, { Author, Year_Born }) {
     let query = "UPDATE authors SET Author = ? , Year_Born = ? WHERE Au_ID = ?";
-    db.query(query, [name, year, id], (err, res) => {
+    db.query(query, [Author, Year_Born, id], (err, res) => {
       if (err) console.log("Erreur :" + err.message);
       else {
         callback({
           data: {
             Au_ID: id,
-            Author: name,
-            Year_Born: year,
+            Author: Author,
+            Year_Born: Year_Born,
           },
         });
       }
