@@ -35,7 +35,23 @@ class BiblioService {
   }
 
   getAllDocuments(callback) {
-    this.publisherDao.select(callback);
+    this.documentDao.select(callback);
+  }
+
+  insertDocument(callback, body) {
+    this.documentDao.insert(callback, body);
+  }
+
+  getDocument(callback, ISBN) {
+    this.documentDao.selectBy(callback, ISBN);
+  }
+
+  deleteDocument(callback, ISBN) {
+    this.documentDao.delete(callback, ISBN);
+  }
+
+  updateDocument(callback, ISBN, body) {
+    this.documentDao.update(callback, ISBN, body);
   }
 }
 

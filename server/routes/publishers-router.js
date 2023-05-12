@@ -8,4 +8,5 @@ router.get("/", (req, res) => {
     console.log(result.fields);
   });
 });
+
 module.exports = router;
