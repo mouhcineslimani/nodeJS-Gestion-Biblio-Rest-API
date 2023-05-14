@@ -12,15 +12,15 @@ class PublisherDao {
     throw new Error("Must be Implemented!");
   }
 
-  insert({ ISBN, Title, Year_Published, Publisher_ID }) {
+  insert({ Publisher_ID, Name, Company }) {
     throw new Error("Must be Implemented!");
   }
 
-  update(ISBN, { Title, Year_Published, Publisher_ID }) {
+  update(Publisher_ID, { Name, Company }) {
     throw new Error("Must be Implemented!");
   }
 
-  delete(ISBN) {
+  delete(Publisher_ID) {
     throw new Error("Must be Implemented!");
   }
 }

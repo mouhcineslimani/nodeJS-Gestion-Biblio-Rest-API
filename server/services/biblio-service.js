@@ -30,10 +30,6 @@ class BiblioService {
     this.authorDao.update(callback, id, body);
   }
 
-  getAllPublishers(callback) {
-    this.documentDao.select(callback);
-  }
-
   getAllDocuments(callback) {
     this.documentDao.select(callback);
   }
@@ -52,6 +48,26 @@ class BiblioService {
 
   updateDocument(callback, ISBN, body) {
     this.documentDao.update(callback, ISBN, body);
+  }
+
+  getAllPublishers(callback) {
+    this.publisherDao.select(callback);
+  }
+
+  insertPublisher(callback, body) {
+    this.publisherDao.insert(callback, body);
+  }
+
+  getPublisher(callback, Publisher_ID) {
+    this.publisherDao.selectBy(callback, Publisher_ID);
+  }
+
+  deletePublisher(callback, Publisher_ID) {
+    this.publisherDao.delete(callback, Publisher_ID);
+  }
+
+  updatePublisher(callback, Publisher_ID, body) {
+    this.publisherDao.update(callback, Publisher_ID, body);
   }
 }
 

@@ -19,22 +19,22 @@ class PublisherDaoMysql extends PublisherDao {
     });
   }
 
-  insert(callback, { ISBN, Title, Year_Published, Publisher_ID }) {
+  insert(callback, { Publisher_ID, Name, Company }) {
     let query =
-      "INSERT INTO publishers (ISBN, Title, Year_Published, Publisher_ID) VALUES (?, ?, ?, ?)";
-    db.query(query, [ISBN, Title, Year_Published, Publisher_ID], (err, res) => {
+      "INSERT INTO publishers ( Publisher_ID, Name, Company ) VALUES ( ?, ?, ?)";
+    db.query(query, [Publisher_ID, Name, Company], (err, res) => {
       if (err) console.log("Erreur :" + err.message);
       else {
         callback({
-          data: { ISBN, Title, Year_Published, Publisher_ID },
+          data: { Publisher_ID, Name, Company },
         });
       }
     });
   }
 
-  selectBy(callback, ISBN) {
-    let query = "SELECT * FROM publishers WHERE ISBN = ?";
-    db.query(query, ISBN, (err, res) => {
+  selectBy(callback, Publisher_ID) {
+    let query = "SELECT * FROM publishers WHERE Publisher_ID = ?";
+    db.query(query, Publisher_ID, (err, res) => {
       if (err) console.log("Erreur :" + err.message);
       else {
         callback({
@@ -44,30 +44,29 @@ class PublisherDaoMysql extends PublisherDao {
     });
   }
 
-  delete(callback, ISBN) {
-    let query = "DELETE FROM publishers WHERE ISBN = ?";
-    db.query(query, ISBN, (err, res) => {
+  delete(callback, Publisher_ID) {
+    let query = "DELETE FROM publishers WHERE Publisher_ID = ?";
+    db.query(query, Publisher_ID, (err, res) => {
       if (err) console.log("Erreur :" + err.message);
       else {
         callback({
-          data: ISBN,
+          data: Publisher_ID,
         });
       }
     });
   }
 
-  update(callback, ISBN, { Title, Year_Published, Publisher_ID }) {
+  update(callback, Publisher_ID, { Name, Company }) {
     let query =
-      "UPDATE publishers SET Title = ?, Year_Published = ?, Publisher_ID = ? WHERE ISBN = ?";
-    db.query(query, [Title, Year_Published, Publisher_ID, ISBN], (err, res) => {
+      "UPDATE publishers SET Name = ?, Company = ? WHERE Publisher_ID = ?";
+    db.query(query, [Name, Company, Publisher_ID], (err, res) => {
       if (err) console.log("Erreur :" + err.message);
       else {
         callback({
           data: {
-            ISBN,
-            Title,
-            Year_Published,
             Publisher_ID,
+            Name,
+            Company,
           },
         });
       }
