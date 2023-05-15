@@ -9,6 +9,13 @@ router.get("/", (req, res) => {
   });
 });
 
+router.get("/statistics", (req, res) => {
+  service.getDocumentsPublisher((result) => {
+    res.send(result.data);
+    console.log(result.fields);
+  });
+});
+
 router.post("/", (req, res) => {
   service.insertPublisher((result) => {
     res.send(result.data);
@@ -36,4 +43,5 @@ router.put("/:Publisher_ID", (req, res) => {
     req.body
   );
 });
+
 module.exports = router;

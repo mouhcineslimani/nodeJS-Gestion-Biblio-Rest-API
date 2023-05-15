@@ -4,6 +4,7 @@ class PublisherDao {
       throw new Error("It is an Abstract class. Cannot be Instanciated!");
     }
   }
+
   select() {
     throw new Error("Must be Implemented!");
   }
@@ -21,6 +22,10 @@ class PublisherDao {
   }
 
   delete(Publisher_ID) {
+    throw new Error("Must be Implemented!");
+  }
+
+  publisherDocument() {
     throw new Error("Must be Implemented!");
   }
 }

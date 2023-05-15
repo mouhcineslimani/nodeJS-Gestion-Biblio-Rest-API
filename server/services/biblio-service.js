@@ -69,6 +69,10 @@ class BiblioService {
   updatePublisher(callback, Publisher_ID, body) {
     this.publisherDao.update(callback, Publisher_ID, body);
   }
+
+  getDocumentsPublisher(callback) {
+    this.publisherDao.publisherDocument(callback);
+  }
 }
 
 const biblioService = new BiblioService(

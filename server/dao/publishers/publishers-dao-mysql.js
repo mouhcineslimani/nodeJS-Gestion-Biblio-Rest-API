@@ -72,6 +72,20 @@ class PublisherDaoMysql extends PublisherDao {
       }
     });
   }
+
+  publisherDocument(callback) {
+    let query =
+      "SELECT Name , count(*) as number FROM publishers p , titles t where p.Publisher_ID = t.Publisher_ID group by p.Publisher_ID ;";
+    db.query(query, (err, result, fields) => {
+      if (err) console.log("Erreur :" + err.message);
+      else {
+        callback({
+          data: result,
+          fields: fields.map((field) => field.name),
+        });
+      }
+    });
+  }
 }
 
 module.exports = new PublisherDaoMysql();
