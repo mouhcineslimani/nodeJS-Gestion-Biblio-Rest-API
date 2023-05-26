@@ -32,7 +32,20 @@ class PublisherDaoMysql extends PublisherDao {
     });
   }
 
-  selectBy(callback, Publisher_ID) {
+  selectBy(callback, Name) {
+    let query = "SELECT * FROM publishers WHERE Name LIKE ?";
+    const params = [`%${Name}%`];
+    db.query(query, params, (err, res) => {
+      if (err) console.log("Erreur :" + err.message);
+      else {
+        callback({
+          data: res,
+        });
+      }
+    });
+  }
+
+  selectById(callback, Publisher_ID) {
     let query = "SELECT * FROM publishers WHERE Publisher_ID = ?";
     db.query(query, Publisher_ID, (err, res) => {
       if (err) console.log("Erreur :" + err.message);
@@ -75,7 +88,7 @@ class PublisherDaoMysql extends PublisherDao {
 
   publisherDocument(callback) {
     let query =
-      "SELECT Name , count(*) as number FROM publishers p , titles t where p.Publisher_ID = t.Publisher_ID group by p.Publisher_ID ;";
+      "SELECT Name , count(*) as number FROM publishers p , titles t where p.Publisher_ID = t.Publisher_ID group by p.Publisher_ID LIMIT 20; ;";
     db.query(query, (err, result, fields) => {
       if (err) console.log("Erreur :" + err.message);
       else {

@@ -32,9 +32,22 @@ class AuthorDaoMysql extends AuthorDao {
     });
   }
 
-  selectBy(callback, id) {
+  selectBy(callback, Author) {
+    let query = "SELECT * FROM authors WHERE Author LIKE ?";
+    const params = [`%${Author}%`];
+    db.query(query, params, (err, res) => {
+      if (err) console.log("Erreur :" + err.message);
+      else {
+        callback({
+          data: res,
+        });
+      }
+    });
+  }
+
+  selectById(callback, Au_ID) {
     let query = "SELECT * FROM authors WHERE Au_ID = ?";
-    db.query(query, id, (err, res) => {
+    db.query(query, Au_ID, (err, res) => {
       if (err) console.log("Erreur :" + err.message);
       else {
         callback({

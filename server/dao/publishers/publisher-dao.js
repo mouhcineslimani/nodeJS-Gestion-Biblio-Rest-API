@@ -13,6 +13,10 @@ class PublisherDao {
     throw new Error("Must be Implemented!");
   }
 
+  selectById() {
+    throw new Error("Must be Implemented!");
+  }
+
   insert({ Publisher_ID, Name, Company }) {
     throw new Error("Must be Implemented!");
   }

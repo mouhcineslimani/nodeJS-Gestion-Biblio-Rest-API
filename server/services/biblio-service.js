@@ -14,12 +14,15 @@ class BiblioService {
   }
 
   insertAuthor(callback, body) {
-    console.log(body);
     this.authorDao.insert(callback, body);
   }
 
-  getAuthor(callback, id) {
-    this.authorDao.selectBy(callback, id);
+  getAuthor(callback, Author) {
+    this.authorDao.selectBy(callback, Author);
+  }
+
+  getAuthorById(callback, id) {
+    this.authorDao.selectById(callback, id);
   }
 
   deleteAuthor(callback, id) {
@@ -58,8 +61,12 @@ class BiblioService {
     this.publisherDao.insert(callback, body);
   }
 
-  getPublisher(callback, Publisher_ID) {
-    this.publisherDao.selectBy(callback, Publisher_ID);
+  getPublisher(callback, Name) {
+    this.publisherDao.selectBy(callback, Name);
+  }
+
+  getPublisherById(callback, Publisher_ID) {
+    this.publisherDao.selectById(callback, Publisher_ID);
   }
 
   deletePublisher(callback, Publisher_ID) {

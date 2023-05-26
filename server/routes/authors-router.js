@@ -15,8 +15,14 @@ router.post("/", (req, res) => {
   }, req.body);
 });
 
-router.get("/:id", (req, res) => {
+router.get("/:Author", (req, res) => {
   service.getAuthor((result) => {
+    res.send(result.data);
+  }, req.params.Author);
+});
+
+router.get("/search/:id", (req, res) => {
+  service.getAuthorById((result) => {
     res.send(result.data);
   }, req.params.id);
 });

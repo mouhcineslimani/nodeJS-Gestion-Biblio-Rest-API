@@ -8,7 +8,11 @@ class AuthorDao {
     throw new Error("Must be Implemented!");
   }
 
-  selectBy() {
+  selectBy(name) {
+    throw new Error("Must be Implemented!");
+  }
+
+  selectById(id) {
     throw new Error("Must be Implemented!");
   }
 

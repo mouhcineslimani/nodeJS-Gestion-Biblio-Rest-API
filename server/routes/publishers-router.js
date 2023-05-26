@@ -22,10 +22,16 @@ router.post("/", (req, res) => {
   }, req.body);
 });
 
-router.get("/:Publisher_ID", (req, res) => {
-  service.getPublisher((result) => {
+router.get("/search/:Publisher_ID", (req, res) => {
+  service.getPublisherById((result) => {
     res.send(result.data);
   }, req.params.Publisher_ID);
+});
+
+router.get("/:Name", (req, res) => {
+  service.getPublisher((result) => {
+    res.send(result.data);
+  }, req.params.Name);
 });
 
 router.delete("/:Publisher_ID", (req, res) => {
