@@ -2,7 +2,11 @@ const { Router } = require("express");
 const service = require("../services/biblio-service");
 
 const router = new Router();
-
+router.get("/test",(req, res) => {
+  service.getAllAuthors((result) => {
+    res.send("Hello ,bien fait");
+  });
+})
 router.get("/", (req, res) => {
   service.getAllAuthors((result) => {
     res.send(result.data);
